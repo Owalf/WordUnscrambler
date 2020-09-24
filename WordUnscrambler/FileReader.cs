@@ -10,11 +10,13 @@ namespace WordUnscrambler
     {
         public string[] Read(string filename)
         {
+            //Created array for file content
             string[] fileContent;
             try
             {
                 fileContent = File.ReadAllLines(filename);
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
