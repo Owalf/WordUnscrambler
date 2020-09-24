@@ -15,43 +15,66 @@ namespace WordUnscrambler
 
         static void Main(string[] args)
         {
-            try
+            String userInput = "Y";
+
+            while (true)
             {
-                Console.WriteLine("Enter scrambled word(s) manually or as a file: F - File / M - Manual");
-
-                string option = Console.ReadLine();
-
-                switch (option.ToUpper())
+                if (userInput == "Y")
                 {
-                    case "F":
-                        Console.WriteLine("Enter the full path including the file name: ");
-                        ExecuteScrambledWordsInFileScenario();
-                        break;
-                    case "M":
-                        Console.WriteLine("Enter word(s) manually (separated my commas if there are multiple words");
-                        ExecuteScrambledWordsManualEntryScenario();
-                        break;
-                    default:
-                        Console.WriteLine("The entered option was not recognized");
-                        break;
+                    try
+                    {
+                        Console.WriteLine("Enter scrambled word(s) manually or as a file: F - File / M - Manual");
+
+                        string option = Console.ReadLine();
+
+                        switch (option.ToUpper())
+                        {
+                            case "F":
+                                Console.WriteLine("Enter the full path including the file name: ");
+                                ExecuteScrambledWordsInFileScenario();
+                                break;
+                            case "M":
+                                Console.WriteLine("Enter word(s) manually (separated by commas if there are multiple words)");
+                                ExecuteScrambledWordsManualEntryScenario();
+                                break;
+                            default:
+                                Console.WriteLine("The entered option was not recognized");
+                                break;
+                        }
+
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine("The program will be terminated" + ex.Message);
+                    }
+
+                    Console.WriteLine("Would you like to continue? (Y/N)");
+                    userInput = Console.ReadLine();
                 }
 
-            } catch(Exception ex)
-            {
-                Console.WriteLine("The program will be terminated" + ex.Message);
-            }
-        }
+                else if (userInput == "N")
+                {
+                    break;
+                }
 
+                else {
+                    Console.WriteLine("Would you like to continue? (Y/N)");
+                    userInput = Console.ReadLine();
+                }
+            }
+
+        }
         private static void ExecuteScrambledWordsManualEntryScenario()
         {
             //Read the user's input - manually entered words separated by commas
-            //string manualInput;
+            string manualInput;
+            manualInput = Console.ReadLine();
             //extract the words into a string[] - use Split()
-            //char[] separators = { ',', ' ' };
-            //string[] scrambledWords = manualInput.Split();
+            char[] separators = { ',', ' ' };
+            string[] scrambledWords = manualInput.Split(separators);
 
             //display the matched words
-            //DisplayMatchedUnscrambledWords(scrambledWords);
+            DisplayMatchedUnscrambledWords(scrambledWords);
         }
 
         private static void ExecuteScrambledWordsInFileScenario()
@@ -69,7 +92,7 @@ namespace WordUnscrambler
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
             //Read the list of words in the wordlist.txt (unscrambled words)
-            string[] wordList = _fileReader.Read("wordlist.txt");
+            string[] wordList = _fileReader.Read("wordList.txt");
 
             //Call a word matched method, to get a list of MatchedWord structs
             List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
@@ -82,7 +105,7 @@ namespace WordUnscrambler
                 {
                     //write to console
                     //output -> MATCH FOUND FOR act: cat
-                    Console.WriteLine("MATCH FOUND FOR " + matchedWord.ScrambledWord + " : " + matchedWord.Word);
+                    Console.WriteLine("\n" + "MATCH FOUND FOR " + matchedWord.ScrambledWord + " : " + matchedWord.Word + "\n");
                 }
 
             } else
