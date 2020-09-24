@@ -25,6 +25,7 @@ namespace WordUnscrambler
                     {
                         //Convert strings into character arrays
                         char[] scrambledWordArray = scrambledWord.ToCharArray();
+                           
                         //act sort -> act
                         //cat sort -> act
 
