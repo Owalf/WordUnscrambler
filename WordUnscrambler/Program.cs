@@ -92,7 +92,7 @@ namespace WordUnscrambler
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
             //Read the list of words in the wordlist.txt (unscrambled words)
-            string[] wordList = _fileReader.Read("wordList.txt");
+            string[] wordList = _fileReader.Read("wordlist.txt");
 
             //Call a word matched method, to get a list of MatchedWord structs
             List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
@@ -105,7 +105,7 @@ namespace WordUnscrambler
                 {
                     //write to console
                     //output -> MATCH FOUND FOR act: cat
-                    Console.WriteLine("\n" + "MATCH FOUND FOR " + matchedWord.ScrambledWord + " : " + matchedWord.Word + "\n");
+                    Console.WriteLine("MATCH FOUND FOR " + matchedWord.ScrambledWord + " : " + matchedWord.Word);
                 }
 
             } else
