@@ -15,10 +15,11 @@ namespace WordUnscrambler
 
         static void Main(string[] args)
         {
-            String userInput = "Y";
+            string userInput = "Y";
 
             while (true)
             {
+
                 if (userInput.ToUpper() == "Y")
                 {
                     try
@@ -26,7 +27,12 @@ namespace WordUnscrambler
                         Console.WriteLine("Enter scrambled word(s) manually or as a file: F - File / M - Manual");
 
                         string option = Console.ReadLine();
-
+                        //While loop to make sure the user entered a valid option
+                        while(!(option.ToUpper() == "M" || option.ToUpper() == "F"))
+                        {
+                            Console.WriteLine("The entered option was not recognized, enter a valid option.");
+                            option = Console.ReadLine();
+                        }
                         switch (option.ToUpper())
                         {
                             case "F":
@@ -38,14 +44,14 @@ namespace WordUnscrambler
                                 ExecuteScrambledWordsManualEntryScenario();
                                 break;
                             default:
-                                Console.WriteLine("The entered option was not recognized");
+                                Console.WriteLine("If this appears in the console, then you're either cheating or you're in the matrix ;)");
                                 break;
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("The program will be terminated" + ex.Message);
+                        Console.WriteLine("The program will be terminated. " + ex.Message);
                     }
 
                     Console.WriteLine("Would you like to continue? (Y/N)");
@@ -68,8 +74,7 @@ namespace WordUnscrambler
         private static void ExecuteScrambledWordsManualEntryScenario()
         {
             //Read the user's input - manually entered words separated by commas
-            string manualInput;
-            manualInput = Console.ReadLine();
+            string manualInput = Console.ReadLine();
             //extract the words into a string[] - use Split()
             char[] separators = { ',', ' ' };
             string[] scrambledWords = manualInput.Split(separators);
