@@ -15,11 +15,12 @@ namespace WordUnscrambler
 
         static void Main(string[] args)
         {
+            //Created a string to keep the value of the user input.
             string userInput = "Y";
-
+            //Created an infinite loop until the loop breaks.
             while (true)
             {
-
+                //If the user input remains "Y" then run the following code
                 if (userInput.ToUpper() == "Y")
                 {
                     try
@@ -53,16 +54,16 @@ namespace WordUnscrambler
                     {
                         Console.WriteLine("The program will be terminated. " + ex.Message);
                     }
-
+                    //Ask the user to either continue the loop (Y) or quit the loop and program (N)
                     Console.WriteLine("Would you like to continue? (Y/N)");
                     userInput = Console.ReadLine();
                 }
-
+                //If the userInput changes to "N", then break the loop and exit the program.
                 else if (userInput.ToUpper() == "N")
                 {
                     break;
                 }
-
+                //If the user enters gibberish, then we just ask the user to enter a valid option for userInput (Y/N)
                 else
                 {
                     Console.WriteLine("Would you like to continue? (Y/N)");
