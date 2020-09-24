@@ -19,7 +19,7 @@ namespace WordUnscrambler
 
             while (true)
             {
-                if (userInput == "Y")
+                if (userInput.ToUpper() == "Y")
                 {
                     try
                     {
@@ -52,7 +52,7 @@ namespace WordUnscrambler
                     userInput = Console.ReadLine();
                 }
 
-                else if (userInput == "N")
+                else if (userInput.ToUpper() == "N")
                 {
                     break;
                 }
