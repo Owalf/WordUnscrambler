@@ -21,27 +21,24 @@ namespace WordUnscrambler
                     if (scrambledWord.Equals(word, StringComparison.OrdinalIgnoreCase))
                     {
                         matchedWords.Add(BuildMatchedWord(scrambledWord, word));
-                    } else
+                    }
+                    else
                     {
                         //Convert strings into character arrays
                         char[] scrambledWordArray = scrambledWord.ToCharArray();
                         char[] wordArray = word.ToCharArray();
-                        //cat sort -> act
+                        //Sort both character arrays (Array.sort())
                         Array.Sort(scrambledWordArray);
                         Array.Sort(wordArray);
-                        //Sort both character arrays (Array.sort())
                         //Convert character array back to a string
                         string sortedScrambledWord = new string(scrambledWordArray);
                         string sortedWord = new string(wordArray);
-
+                        //Compare the two strings
                         if (sortedScrambledWord.Equals(sortedWord, StringComparison.OrdinalIgnoreCase))
                         {
                             matchedWords.Add(BuildMatchedWord(scrambledWord, word));
                         }
-                        //Compare the two strings
                     }
-
-
                 }
             }
 
