@@ -12,6 +12,7 @@ namespace WordUnscrambler
         {
             //Created array for file content
             string[] fileContent;
+            //Try-catch method to read the file and throw an exception if failed
             try
             {
                 fileContent = File.ReadAllLines(filename);
