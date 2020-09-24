@@ -25,37 +25,37 @@ namespace WordUnscrambler
                 {
                     try
                     {
-                        Console.WriteLine("Enter scrambled word(s) manually or as a file: F - File / M - Manual");
+                        Console.WriteLine(Constants.ManualOrFileOption);
 
                         string option = Console.ReadLine();
                         //While loop to make sure the user entered a valid option
                         while(!(option.ToUpper() == "M" || option.ToUpper() == "F"))
                         {
-                            Console.WriteLine("The entered option was not recognized, enter a valid option.");
+                            Console.WriteLine(Constants.ManualOrFileOptionError);
                             option = Console.ReadLine();
                         }
                         switch (option.ToUpper())
                         {
                             case "F":
-                                Console.WriteLine("Enter the full path including the file name: ");
+                                Console.WriteLine(Constants.EnterFilePath);
                                 ExecuteScrambledWordsInFileScenario();
                                 break;
                             case "M":
-                                Console.WriteLine("Enter word(s) manually (separated by commas if there are multiple words)");
+                                Console.WriteLine(Constants.ManuallyEnteredWords);
                                 ExecuteScrambledWordsManualEntryScenario();
                                 break;
                             default:
-                                Console.WriteLine("If this appears in the console, then you're either cheating or you're in the matrix ;)");
+                                Console.WriteLine(Constants.Matrix);
                                 break;
                         }
 
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine("The program will be terminated. " + ex.Message);
+                        Console.WriteLine(Constants.FileExceptionError + ex.Message);
                     }
                     //Ask the user to either continue the loop (Y) or quit the loop and program (N)
-                    Console.WriteLine("Would you like to continue? (Y/N)");
+                    Console.WriteLine(Constants.ContinueLoop);
                     userInput = Console.ReadLine();
                 }
                 //If the userInput changes to "N", then break the loop and exit the program.
@@ -66,7 +66,7 @@ namespace WordUnscrambler
                 //If the user enters gibberish, then we just ask the user to enter a valid option for userInput (Y/N)
                 else
                 {
-                    Console.WriteLine("Would you like to continue? (Y/N)");
+                    Console.WriteLine(Constants.ContinueLoop);
                     userInput = Console.ReadLine();
                 }
             }
@@ -76,11 +76,11 @@ namespace WordUnscrambler
         {
             //Read the user's input - manually entered words separated by commas
             string manualInput = Console.ReadLine();
-            //extract the words into a string[] - use Split()
+            //Separators to separate each word if entered manually
             char[] separators = { ',', ' ' };
             string[] scrambledWords = manualInput.Split(separators);
 
-            //display the matched words
+            //Display the matched words
             DisplayMatchedUnscrambledWords(scrambledWords);
         }
 
@@ -99,26 +99,24 @@ namespace WordUnscrambler
         private static void DisplayMatchedUnscrambledWords(string[] scrambledWords)
         {
             //Read the list of words in the wordlist.txt (unscrambled words)
-            string[] wordList = _fileReader.Read("wordlist.txt");
+            string[] wordList = _fileReader.Read(Constants.FilePath);
 
             //Call a word matched method, to get a list of MatchedWord structs
             List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
             //Display the match - print to console
             if (matchedWords.Any())
             {
-                //loop through matchedWords and print to console the contents of the structs
-                //foreach
+                //Loop through matchedWords and print to console the contents of the structs
                 foreach (var matchedWord in matchedWords)
                 {
-                    //write to console
-                    //output -> MATCH FOUND FOR act: cat
-                    Console.WriteLine("MATCH FOUND FOR " + matchedWord.ScrambledWord + " : " + matchedWord.Word);
+                    //Write to console all the matched words
+                    Console.WriteLine(Constants.MatchFound + matchedWord.ScrambledWord + " : " + matchedWord.Word);
                 }
 
             } else
             {
-                //NO MATCHED HAVE BEEN FOUND
-                Console.WriteLine("NO MATCH FOUND");
+                //Print "NO MATCH FOUND" if there are no matched words
+                Console.WriteLine(Constants.NoMatchFound);
             }
         }
     }
