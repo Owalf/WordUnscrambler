@@ -45,13 +45,14 @@ namespace WordUnscrambler
         private static void ExecuteScrambledWordsManualEntryScenario()
         {
             //Read the user's input - manually entered words separated by commas
-            //string manualInput;
+            string manualInput;
+            manualInput = Console.ReadLine();
             //extract the words into a string[] - use Split()
-            //char[] separators = { ',', ' ' };
-            //string[] scrambledWords = manualInput.Split();
+            char[] separators = { ',', ' ' };
+            string[] scrambledWords = manualInput.Split();
 
             //display the matched words
-            //DisplayMatchedUnscrambledWords(scrambledWords);
+            DisplayMatchedUnscrambledWords(scrambledWords);
         }
 
         private static void ExecuteScrambledWordsInFileScenario()
