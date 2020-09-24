@@ -109,8 +109,7 @@ namespace WordUnscrambler
                     Console.WriteLine("MATCH FOUND FOR " + matchedWord.ScrambledWord + " : " + matchedWord.Word);
                 }
 
-            }
-            else
+            } else
             {
                 //NO MATCHED HAVE BEEN FOUND
                 Console.WriteLine("NO MATCH FOUND");
