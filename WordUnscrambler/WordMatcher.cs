@@ -31,6 +31,13 @@ namespace WordUnscrambler
                         Array.Sort(wordArray);
                         //Sort both character arrays (Array.sort())
                         //Convert character array back to a string
+                        string sortedScrambledWord = new string(scrambledWordArray);
+                        string sortedWord = new string(wordArray);
+
+                        if (sortedScrambledWord.Equals(sortedWord, StringComparison.OrdinalIgnoreCase))
+                        {
+                            matchedWords.Add(BuildMatchedWord(scrambledWord, word));
+                        }
                         //Compare the two strings
                     }
 
