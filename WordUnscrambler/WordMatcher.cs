@@ -25,9 +25,10 @@ namespace WordUnscrambler
                     {
                         //Convert strings into character arrays
                         char[] scrambledWordArray = scrambledWord.ToCharArray();
-                        //act sort -> act
+                        char[] wordArray = word.ToCharArray();
                         //cat sort -> act
-
+                        Array.Sort(scrambledWordArray);
+                        Array.Sort(wordArray);
                         //Sort both character arrays (Array.sort())
                         //Convert character array back to a string
                         //Compare the two strings
