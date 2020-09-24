@@ -10,9 +10,9 @@ namespace WordUnscrambler
     {
         public string[] Read(string filename)
         {
-            //Created array for file content
+            //Created array for file content.
             string[] fileContent;
-            //Try-catch method to read the file and throw an exception if failed
+            //Try-catch method to read the file and throw an exception if failed.
             try
             {
                 fileContent = File.ReadAllLines(filename);
@@ -21,6 +21,7 @@ namespace WordUnscrambler
             {
                 throw new Exception(ex.Message);
             }
+            //The Read method should return the content of the file.
             return fileContent;
         }
     }
