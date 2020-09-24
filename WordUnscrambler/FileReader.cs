@@ -8,14 +8,14 @@ namespace WordUnscrambler
 {
     class FileReader
     {
-        public string[] Read(string filename)
+        public string[] Read(string fileName)
         {
             //Created array for file content.
             string[] fileContent;
             //Try-catch method to read the file and throw an exception if failed.
             try
             {
-                fileContent = File.ReadAllLines(filename);
+                fileContent = File.ReadAllLines(fileName);
             }
             catch (Exception ex)
             {
