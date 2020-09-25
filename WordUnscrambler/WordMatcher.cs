@@ -13,12 +13,12 @@ namespace WordUnscrambler
         {
             List<MatchedWord> matchedWords = new List<MatchedWord>();
 
-            foreach (var scrambledWord in scrambledWords)
+            foreach(var scrambledWord in scrambledWords)
             {
-                foreach (var word in wordList)
+                foreach(var word in wordList)
                 {
                     //scrambledWord already matches word
-                    if (scrambledWord.Equals(word, StringComparison.OrdinalIgnoreCase))
+                    if(scrambledWord.Equals(word, StringComparison.OrdinalIgnoreCase))
                     {
                         matchedWords.Add(BuildMatchedWord(scrambledWord, word));
                     }
@@ -30,11 +30,11 @@ namespace WordUnscrambler
                         //Sort both character arrays (Array.sort())
                         Array.Sort(scrambledWordArray);
                         Array.Sort(wordArray);
-                        //Convert character array back to a string
+                        //Convert sorted character arrays back to strings
                         string sortedScrambledWord = new string(scrambledWordArray);
                         string sortedWord = new string(wordArray);
                         //Compare the two strings
-                        if (sortedScrambledWord.Equals(sortedWord, StringComparison.OrdinalIgnoreCase))
+                        if(sortedScrambledWord.Equals(sortedWord, StringComparison.OrdinalIgnoreCase))
                         {
                             matchedWords.Add(BuildMatchedWord(scrambledWord, word));
                         }

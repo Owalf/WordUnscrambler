@@ -18,10 +18,10 @@ namespace WordUnscrambler
             //Created a string to keep the value of the user input.
             string userInput = "Y";
             //Created an infinite loop until the loop breaks.
-            while (true)
+            while(true)
             {
                 //If the user input remains "Y" then run the following code
-                if (userInput.ToUpper() == "Y")
+                if(userInput.ToUpper() == "Y")
                 {
                     try
                     {
@@ -34,7 +34,7 @@ namespace WordUnscrambler
                             Console.WriteLine(Constants.ManualOrFileOptionError);
                             option = Console.ReadLine();
                         }
-                        switch (option.ToUpper())
+                        switch(option.ToUpper())
                         {
                             case "F":
                                 Console.WriteLine(Constants.EnterFilePath);
@@ -50,7 +50,7 @@ namespace WordUnscrambler
                         }
 
                     }
-                    catch (Exception ex)
+                    catch(Exception ex)
                     {
                         Console.WriteLine(Constants.FileExceptionError + ex.Message);
                     }
@@ -59,7 +59,7 @@ namespace WordUnscrambler
                     userInput = Console.ReadLine();
                 }
                 //If the userInput changes to "N", then break the loop and exit the program.
-                else if (userInput.ToUpper() == "N")
+                else if(userInput.ToUpper() == "N")
                 {
                     break;
                 }
@@ -77,7 +77,7 @@ namespace WordUnscrambler
             //Read the user's input - manually entered words separated by commas
             string manualInput = Console.ReadLine();
             //Separators to separate each word if entered manually
-            char[] separators = { ',', ' ' };
+            char[] separators = {',', ' '};
             string[] scrambledWords = manualInput.Split(separators);
 
             //Display the matched words
@@ -104,10 +104,10 @@ namespace WordUnscrambler
             //Call a word matched method, to get a list of MatchedWord structs
             List<MatchedWord> matchedWords = _wordMatcher.Match(scrambledWords, wordList);
             //Display the match - print to console
-            if (matchedWords.Any())
+            if(matchedWords.Any())
             {
                 //Loop through matchedWords and print to console the contents of the structs
-                foreach (var matchedWord in matchedWords)
+                foreach(var matchedWord in matchedWords)
                 {
                     //Write to console all the matched words
                     Console.WriteLine(Constants.MatchFound + matchedWord.ScrambledWord + " : " + matchedWord.Word);
